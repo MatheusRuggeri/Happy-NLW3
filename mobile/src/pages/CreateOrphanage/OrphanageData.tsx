@@ -19,6 +19,7 @@ export default function OrphanageData() {
   const [instructions, setInstructions] = useState('');
   const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
+  const [whatsapp_number, setWhatsappNumber] = useState('');
   const [images, setImages] = useState<string[]>([]);
 
   const route = useRoute();
@@ -37,7 +38,8 @@ export default function OrphanageData() {
     data.append('instructions', instructions);
     data.append('opening_hours', opening_hours);
     data.append('open_on_weekends', String(open_on_weekends));
-
+    data.append('whatsapp_number', String(whatsapp_number));
+    
     images.forEach((image, index) => {
       data.append('images', {
         name: `image_${index}.jpg`, 
@@ -133,6 +135,13 @@ export default function OrphanageData() {
         style={styles.input}
         value={opening_hours}
         onChangeText={setOpeningHours}
+      />
+
+      <Text style={styles.label}>Whatsapp</Text>
+      <TextInput
+        style={styles.input}
+        value={whatsapp_number}
+        onChangeText={setWhatsappNumber}
       />
 
       <View style={styles.switchContainer}>
